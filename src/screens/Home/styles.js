@@ -5,10 +5,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#282828',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {
-    width: 277,
-    height: 324,
+    width: 161,
+    height: 77,
     resizeMode: 'stretch',
   },
 })
