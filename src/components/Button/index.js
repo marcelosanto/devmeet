@@ -15,7 +15,7 @@ export default ({ icon, bColor, fColor, onPress, backColor, title }) => {
         style={{
           fontFamily: 'Epilogue_400Regular',
           fontSize: 15,
-          color: fColor,
+          color: fColor ? 'white' : '#282828',
         }}
       >
         {title}
@@ -23,14 +23,14 @@ export default ({ icon, bColor, fColor, onPress, backColor, title }) => {
       <Text
         style={{
           fontFamily: 'Epilogue_400Regular',
-          color: fColor,
+          color: fColor ? 'white' : '#282828',
           fontSize: 11,
         }}
       >
         <Text
           style={{
             fontFamily: 'Epilogue_600SemiBold',
-            color: fColor,
+            color: fColor ? 'white' : '#FF5100',
             fontWeight: 'bold',
           }}
         >

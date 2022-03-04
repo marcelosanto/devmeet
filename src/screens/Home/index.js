@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   FlatList,
+  Dimensions,
 } from 'react-native'
 import { SvgXml } from 'react-native-svg'
 import {
@@ -109,15 +110,26 @@ export default () => {
       <FlatList
         data={dados}
         keyExtractor={(item) => item.title}
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
         renderItem={({ item, index }) => (
-          <View>
+          <View
+            style={{
+              width: (Dimensions.get('window').width - 10) / 2,
+              flex: 1,
+              marginLeft: 30,
+              marginRight: 30,
+            }}
+          >
             <Button
               onPress={() => handleChangeState(item, index)}
               icon={findIcon(item.icon)}
               title={item.title}
               backColor={true}
-              bColor={index === click ? '#FF5100' : 'white'}
-              fColor={index === click ? 'white' : '#282828'}
+              bColor={
+                index === click ? '#FF5100' : click === null ? 'white' : 'gray'
+              }
+              fColor={index === click ? true : false}
             />
           </View>
         )}
