@@ -8,7 +8,7 @@ import Home from '../screens/Home'
 const Stack = createNativeStackNavigator()
 
 export default () => (
-  <Stack.Navigator initialRouteName='Loading'>
+  <Stack.Navigator initialRouteName='Home'>
     <Stack.Screen
       options={{ headerShown: false }}
       name='Loading'
