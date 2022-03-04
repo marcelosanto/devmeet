@@ -11,11 +11,11 @@ import AppLoading from 'expo-app-loading'
 
 import { styles } from './styles'
 
-export default ({ icon, color, onPress, backColor }) => {
+export default ({ icon, color, onPress, backColor, title }) => {
   return (
     <TouchableOpacity
       onPress={() => {}}
-      style={[styles.backButton, { backgroundColor: 'white' }]}
+      style={[styles.backButton, { backgroundColor: color ? color : 'white' }]}
     >
       <SvgXml width='40' height='40' xml={icon} />
       <Text
@@ -25,7 +25,7 @@ export default ({ icon, color, onPress, backColor }) => {
           color: '#282828',
         }}
       >
-        Desenvolvimento Front-end
+        {title}
       </Text>
       <Text
         style={{
@@ -36,7 +36,7 @@ export default ({ icon, color, onPress, backColor }) => {
       >
         <Text
           style={{
-            fontFamily: 'Epilogue_600Regular',
+            fontFamily: 'Epilogue_600SemiBold',
             color: '#FF5100',
             fontWeight: 'bold',
           }}
