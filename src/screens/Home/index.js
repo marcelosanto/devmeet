@@ -17,7 +17,7 @@ import AppLoading from 'expo-app-loading'
 
 import { styles } from './styles'
 
-import Button from '../../components/Button'
+import CardList from '../../components/CardList'
 import { dados } from '../../utils/data'
 
 import {
@@ -31,7 +31,7 @@ import {
   iphone,
 } from '../../../assets/icons'
 
-export default () => {
+export default ({ navigation }) => {
   const [test, setTest] = useState(false)
   const [carai, setCarai] = useState(false)
   const [click, setClick] = useState(null)
@@ -77,6 +77,10 @@ export default () => {
     console.log(index)
   }
 
+  const handleGoEvents = () => {
+    navigation.navigate('Events')
+  }
+
   return (
     <View style={styles.container}>
       <View style={{ marginLeft: 30, marginRight: 30, marginTop: 80 }}>
@@ -115,13 +119,10 @@ export default () => {
         renderItem={({ item, index }) => (
           <View
             style={{
-              width: (Dimensions.get('window').width - 10) / 2,
-              flex: 1,
-              marginLeft: 30,
-              marginRight: 30,
+              width: Dimensions.get('window').width / 2,
             }}
           >
-            <Button
+            <CardList
               onPress={() => handleChangeState(item, index)}
               icon={findIcon(item.icon)}
               title={item.title}
@@ -157,6 +158,7 @@ export default () => {
           </Text>
 
           <TouchableOpacity
+            onPress={handleGoEvents}
             style={{
               backgroundColor: '#04D361',
               width: 40,

@@ -10,7 +10,7 @@ export default ({ icon, bColor, fColor, onPress, backColor, title }) => {
       onPress={onPress}
       style={[styles.backButton, { backgroundColor: bColor }]}
     >
-      <SvgXml width='40' height='40' xml={icon} />
+      <SvgXml width='40' height='40' xml={icon} stroke='white' />
       <Text
         style={{
           fontFamily: 'Epilogue_400Regular',
