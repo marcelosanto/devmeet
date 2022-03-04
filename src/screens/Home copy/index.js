@@ -1,11 +1,5 @@
 import { useState } from 'react'
-import {
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native'
+import { Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import { SvgXml } from 'react-native-svg'
 import {
   useFonts,
@@ -33,7 +27,6 @@ import {
 export default () => {
   const [test, setTest] = useState(false)
   const [carai, setCarai] = useState(false)
-  const [click, setClick] = useState(null)
 
   let [fontsLoaded] = useFonts({
     Epilogue_400Regular,
@@ -62,18 +55,10 @@ export default () => {
     if (iconName == 'iphone') return iphone
   }
 
-  const handleChangeState = (item, index) => {
-    if (test && index == click) {
-      setTest(false)
-      setClick(null)
-    } else if (!test) {
-      setTest((test) => !test)
-      setClick(index)
-    } else {
-      setClick(index)
-    }
-
-    console.log(index)
+  const handleChangeState = (item) => {
+    setTest((test) => !test)
+    setCarai((carai) => !carai)
+    console.log(item)
   }
 
   return (
@@ -106,23 +91,30 @@ export default () => {
         </Text>
       </View>
 
-      <FlatList
-        data={dados}
-        keyExtractor={(item) => item.title}
-        renderItem={({ item, index }) => (
-          <View>
+      <ScrollView
+        contentContainerStyle={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+        }}
+        style={{
+          marginLeft: 30,
+          marginRight: 30,
+          marginTop: 10,
+        }}
+        showsVerticalScrollIndicator={false}
+      >
+        {data.map((item, index) => (
+          <View key={index} style={{ width: '50%', flexDirection: 'row' }}>
             <Button
-              onPress={() => handleChangeState(item, index)}
-              icon={findIcon(item.icon)}
-              title={item.title}
+              onPress={() => handleChangeState(item)}
+              icon={findIcon(dados[item].icon)}
+              title={dados[item].title}
               backColor={true}
-              bColor={index === click ? '#FF5100' : 'white'}
-              fColor={index === click ? 'white' : '#282828'}
+              pColor={carai}
             />
           </View>
-        )}
-      />
-
+        ))}
+      </ScrollView>
       {test && (
         <View
           style={{
