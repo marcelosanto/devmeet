@@ -19,21 +19,28 @@ import { styles } from './styles'
 
 import CardList from '../../components/CardList'
 import { dados } from '../../utils/data'
+import { api } from '../../Api/events'
 
 import {
   serveless,
-  arrowRight,
+  servelessWhite,
+  arrowRightWhite,
   laptop,
+  laptopWhite,
   hierarchy,
+  hierarchyWhite,
   bezier,
+  bezierWhite,
   terminal,
+  terminalWhite,
   blocks,
+  blocksWhite,
   iphone,
+  iphoneWhite,
 } from '../../../assets/icons'
 
 export default ({ navigation }) => {
   const [test, setTest] = useState(false)
-  const [carai, setCarai] = useState(false)
   const [click, setClick] = useState(null)
 
   let [fontsLoaded] = useFonts({
@@ -50,17 +57,31 @@ export default ({ navigation }) => {
   const findIcon = (iconName) => {
     if (iconName == 'serveless') return serveless
 
+    if (iconName == 'servelessWhite') return servelessWhite
+
     if (iconName == 'laptop') return laptop
+
+    if (iconName == 'laptopWhite') return laptopWhite
 
     if (iconName == 'hierarchy') return hierarchy
 
+    if (iconName == 'hierarchyWhite') return hierarchyWhite
+
     if (iconName == 'bezier') return bezier
+
+    if (iconName == 'bezierWhite') return bezierWhite
 
     if (iconName == 'terminal') return terminal
 
+    if (iconName == 'terminalWhite') return terminalWhite
+
     if (iconName == 'blocks') return blocks
 
+    if (iconName == 'blocksWhite') return blocksWhite
+
     if (iconName == 'iphone') return iphone
+
+    if (iconName == 'iphoneWhite') return iphoneWhite
   }
 
   const handleChangeState = (item, index) => {
@@ -73,12 +94,15 @@ export default ({ navigation }) => {
     } else {
       setClick(index)
     }
-
-    console.log(index)
   }
 
   const handleGoEvents = () => {
     navigation.navigate('Events')
+  }
+
+  const returnNumberForEvents = (id) => {
+    const NumberForEvents = api.events.filter((item) => item.tipoId == id)
+    return NumberForEvents.length
   }
 
   return (
@@ -112,8 +136,8 @@ export default ({ navigation }) => {
       </View>
 
       <FlatList
-        data={dados}
-        keyExtractor={(item) => item.title}
+        data={api.tipo}
+        keyExtractor={(item) => item.text}
         showsVerticalScrollIndicator={false}
         numColumns={2}
         renderItem={({ item, index }) => (
@@ -124,13 +148,14 @@ export default ({ navigation }) => {
           >
             <CardList
               onPress={() => handleChangeState(item, index)}
-              icon={findIcon(item.icon)}
-              title={item.title}
+              icon={findIcon(index === click ? item.icon + 'White' : item.icon)}
+              title={item.text}
               backColor={true}
               bColor={
                 index === click ? '#FF5100' : click === null ? 'white' : 'gray'
               }
               fColor={index === click ? true : false}
+              numberEvents={returnNumberForEvents(item.id)}
             />
           </View>
         )}
@@ -172,13 +197,7 @@ export default ({ navigation }) => {
               marginTop: 36,
             }}
           >
-            <SvgXml
-              width='40'
-              height='40'
-              xml={arrowRight}
-              stroke='white'
-              fill='white'
-            />
+            <SvgXml width='22' height='22' xml={arrowRightWhite} />
           </TouchableOpacity>
         </View>
       )}

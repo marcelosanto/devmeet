@@ -4,13 +4,21 @@ import { SvgXml } from 'react-native-svg'
 
 import { styles } from './styles'
 
-export default ({ icon, bColor, fColor, onPress, backColor, title }) => {
+export default ({
+  icon,
+  bColor,
+  fColor,
+  onPress,
+  backColor,
+  title,
+  numberEvents,
+}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[styles.backButton, { backgroundColor: bColor }]}
     >
-      <SvgXml width='40' height='40' xml={icon} stroke='white' />
+      <SvgXml width='40' height='40' xml={icon} />
       <Text
         style={{
           fontFamily: 'Epilogue_400Regular',
@@ -34,7 +42,9 @@ export default ({ icon, bColor, fColor, onPress, backColor, title }) => {
             fontWeight: 'bold',
           }}
         >
-          5 eventos
+          {numberEvents > 1
+            ? numberEvents + ' eventos'
+            : numberEvents + ' evento'}
         </Text>{' '}
         encontrados
       </Text>

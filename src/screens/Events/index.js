@@ -38,7 +38,7 @@ export default ({ navigation }) => {
           onPress={() => navigation.goBack()}
           style={{ flexDirection: 'row' }}
         >
-          <SvgXml width='20' height='20' xml={arrowLeft} stroke='white' />
+          <SvgXml width='20' height='20' xml={arrowLeft} />
           <Text style={{ color: 'white', marginLeft: 10 }}>Voltar</Text>
         </TouchableOpacity>
       ),
