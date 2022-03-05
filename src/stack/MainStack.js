@@ -7,11 +7,12 @@ import Loading from '../screens/Loading'
 import Greeting from '../screens/Greeting'
 import Home from '../screens/Home'
 import Events from '../screens/Events'
+import EventInfo from '../screens/EventInfo'
 
 const Stack = createNativeStackNavigator()
 
 export default () => (
-  <Stack.Navigator initialRouteName='Events'>
+  <Stack.Navigator initialRouteName='EventInfo'>
     <Stack.Screen
       options={{ headerShown: false }}
       name='Loading'
@@ -36,6 +37,16 @@ export default () => (
       }}
       name='Events'
       component={Events}
+    />
+    <Stack.Screen
+      options={{
+        title: '',
+        headerBackVisible: false,
+        headerTintColor: 'white',
+        headerTransparent: true,
+      }}
+      name='EventInfo'
+      component={EventInfo}
     />
   </Stack.Navigator>
 )

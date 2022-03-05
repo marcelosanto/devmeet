@@ -69,6 +69,7 @@ export default ({ navigation }) => {
           width: 250,
           marginLeft: 30,
           fontWeight: 'bold',
+          fontFamily: 'Epilogue_700Bold',
         }}
       >
         Eventos Disponíveis
@@ -81,6 +82,7 @@ export default ({ navigation }) => {
           marginTop: 8,
           width: 220,
           marginLeft: 30,
+          fontWeight: 'Epilogue_400Regular',
         }}
       >
         Selecione o evento desejado. E espere sua data!
