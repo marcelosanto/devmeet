@@ -12,7 +12,7 @@ import EventInfo from '../screens/EventInfo'
 const Stack = createNativeStackNavigator()
 
 export default () => (
-  <Stack.Navigator initialRouteName='EventInfo'>
+  <Stack.Navigator initialRouteName='Home'>
     <Stack.Screen
       options={{ headerShown: false }}
       name='Loading'

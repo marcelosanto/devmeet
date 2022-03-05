@@ -3,9 +3,10 @@ import { SvgXml } from 'react-native-svg'
 
 import { arrowRight } from '../../../assets/icons'
 
-export default ({ title, description, org }) => {
+export default ({ title, description, org, onPress }) => {
   return (
     <TouchableOpacity
+      onPress={onPress}
       style={{
         marginLeft: 30,
         marginRight: 30,
@@ -17,7 +18,7 @@ export default ({ title, description, org }) => {
       <View style={{ margin: 16 }}>
         <Text
           style={{
-            fontfamily: 'Rajdhani_500Medium',
+            fontFamily: 'Rajdhani_500Medium',
             fontSize: 16,
             lineHeight: 20,
             color: '#FF5100',
@@ -26,7 +27,7 @@ export default ({ title, description, org }) => {
           <Text
             style={{
               fontWeight: 'bold',
-              fontfamily: 'Rajdhani_700Bold',
+              fontFamily: 'Rajdhani_700Bold',
               fontSize: 16,
               lineHeight: 20,
             }}

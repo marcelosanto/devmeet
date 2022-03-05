@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Text,
   View,
@@ -29,10 +29,15 @@ import { arrowLeft, arrowRight, bell, bell_off } from '../../../assets/icons'
 
 import { styles } from './styles'
 
-import CardItemEvent from '../../components/CardItemEvent'
 import ProgressBar from '../../components/ProgressBar'
 
+import moment from 'moment'
+
 export default ({ navigation }) => {
+  const [day, setDay] = useState(0)
+  const [hour, setHour] = useState(0)
+  const [min, setMin] = useState(0)
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -46,6 +51,22 @@ export default ({ navigation }) => {
       ),
     })
   }, [navigation])
+
+  useEffect(() => {
+    let date = moment().utcOffset('00:00').format('YYYY-MM-DD hh:mm:ss')
+
+    let expirydate = '2022-03-15 04:00:45'
+
+    let diffr = moment.duration(moment(expirydate).diff(moment(date)))
+
+    let days = parseInt(diffr.asDays())
+    let hours = parseInt(diffr.asHours())
+    let minutes = parseInt(diffr.minutes())
+
+    setDay(days)
+    setHour(hours)
+    setMin(minutes)
+  }, [])
 
   let [fontsLoaded] = useFonts({
     Epilogue_800ExtraBold,
@@ -234,7 +255,7 @@ export default ({ navigation }) => {
                   lineHeight: 51,
                 }}
               >
-                02
+                {day}
               </Text>
               <Text
                 style={{
@@ -257,7 +278,7 @@ export default ({ navigation }) => {
                   lineHeight: 51,
                 }}
               >
-                12
+                {hour}
               </Text>
               <Text
                 style={{
@@ -280,7 +301,7 @@ export default ({ navigation }) => {
                   lineHeight: 51,
                 }}
               >
-                30
+                {min}
               </Text>
               <Text
                 style={{
@@ -296,7 +317,12 @@ export default ({ navigation }) => {
           </View>
 
           <View style={{ marginRight: 32 }}>
-            <ProgressBar step={80} steps={100} height={10} color='#FF5100' />
+            <ProgressBar
+              step={2 * day}
+              steps={100}
+              height={10}
+              color='#FF5100'
+            />
           </View>
         </View>
       </View>

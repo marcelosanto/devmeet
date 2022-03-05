@@ -172,7 +172,13 @@ export default ({ navigation }) => {
               marginTop: 36,
             }}
           >
-            <SvgXml width='15' height='15' xml={arrowRight} />
+            <SvgXml
+              width='40'
+              height='40'
+              xml={arrowRight}
+              stroke='white'
+              fill='white'
+            />
           </TouchableOpacity>
         </View>
       )}

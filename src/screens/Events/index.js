@@ -58,6 +58,10 @@ export default ({ navigation }) => {
     return <AppLoading />
   }
 
+  const handleGoEvents = () => {
+    navigation.navigate('EventInfo')
+  }
+
   return (
     <View style={styles.container}>
       <Text
@@ -82,7 +86,7 @@ export default ({ navigation }) => {
           marginTop: 8,
           width: 220,
           marginLeft: 30,
-          fontWeight: 'Epilogue_400Regular',
+          fontFamily: 'Epilogue_400Regular',
         }}
       >
         Selecione o evento desejado. E espere sua data!
@@ -97,6 +101,7 @@ export default ({ navigation }) => {
           description='  Você pode criar interfaces malucas que dispertam sua criativade.
             Usando de recursos do próprio figma, como seus plugins.'
           org='Comunidade Ballerini'
+          onPress={handleGoEvents}
         />
         <CardItemEvent
           title='Criando interfaces muito malucas com o Figma!'
