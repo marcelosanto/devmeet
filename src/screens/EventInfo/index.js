@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext, useLayoutEffect } from 'react'
 import {
   Text,
   View,
@@ -32,13 +32,29 @@ import { styles } from './styles'
 import ProgressBar from '../../components/ProgressBar'
 
 import moment from 'moment'
+import { UserContext } from '../../context/UserContext'
+
+import {
+  filtroResults,
+  hora,
+  data,
+  formatMes,
+  formatDateAndTime,
+  formatDayPorcentage,
+} from '../../utils/utils'
 
 export default ({ navigation }) => {
   const [day, setDay] = useState(0)
   const [hour, setHour] = useState(0)
   const [min, setMin] = useState(0)
 
-  React.useLayoutEffect(() => {
+  const { state, dispatch } = useContext(UserContext)
+
+  const dataE = data(filtroResults(state.event.dataInicio))
+  const horaE = hora(filtroResults(state.event.dataInicio))
+  const timeAndDate = formatDateAndTime(state.event.dataInicio)
+
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
@@ -55,7 +71,7 @@ export default ({ navigation }) => {
   useEffect(() => {
     let date = moment().utcOffset('00:00').format('YYYY-MM-DD hh:mm:ss')
 
-    let expirydate = '2022-03-15 04:00:45'
+    let expirydate = timeAndDate[0]
 
     let diffr = moment.duration(moment(expirydate).diff(moment(date)))
 
@@ -81,7 +97,7 @@ export default ({ navigation }) => {
   if (!fontsLoaded) {
     return <AppLoading />
   }
-
+  console.log(formatDayPorcentage(day))
   return (
     <View style={styles.container}>
       <View style={{ marginLeft: 30 }}>
@@ -96,7 +112,7 @@ export default ({ navigation }) => {
             fontFamily: 'Epilogue_700Bold',
           }}
         >
-          02/MAR
+          {`${dataE[0][0]}/${formatMes(dataE[0][1])}`}
         </Text>
         <Text
           style={{
@@ -107,7 +123,7 @@ export default ({ navigation }) => {
             fontFamily: 'Epilogue_500Medium',
           }}
         >
-          19:00
+          {`${horaE[0][0]}:${horaE[0][1]}`}
         </Text>
         <Text
           style={{
@@ -119,7 +135,7 @@ export default ({ navigation }) => {
             fontFamily: 'Epilogue_800ExtraBold',
           }}
         >
-          Criando interfaces muito malucas com o Figma!{' '}
+          {state.event.titulo}{' '}
         </Text>
 
         <Text
@@ -133,8 +149,7 @@ export default ({ navigation }) => {
             color: '#959595',
           }}
         >
-          Você pode criar interfaces malucas que dispertam sua criativade.
-          Usando de recursos do próprio figma, como seus plugins.
+          {state.event.descricao}
         </Text>
         <View
           style={{
@@ -156,7 +171,7 @@ export default ({ navigation }) => {
             <Text
               style={{ fontFamily: 'Epilogue_700Bold', fontWeight: 'bold' }}
             >
-              Comunidade Ballerini
+              {state.event.organizador}
             </Text>
           </Text>
         </View>
@@ -190,7 +205,7 @@ export default ({ navigation }) => {
               padding: 10,
             }}
           >
-            <Text style={{ color: 'white' }}>meet.google/12345</Text>
+            <Text style={{ color: 'white' }}>{state.event.link}</Text>
             <View style={{ flexDirection: 'row' }}>
               <TouchableOpacity
                 style={{
@@ -318,7 +333,7 @@ export default ({ navigation }) => {
 
           <View style={{ marginRight: 32 }}>
             <ProgressBar
-              step={2 * day}
+              step={formatDayPorcentage(day)}
               steps={100}
               height={10}
               color='#FF5100'

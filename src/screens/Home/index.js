@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import {
   Text,
   View,
@@ -39,9 +39,13 @@ import {
   iphoneWhite,
 } from '../../../assets/icons'
 
+import { UserContext } from '../../context/UserContext'
+
 export default ({ navigation }) => {
   const [test, setTest] = useState(false)
   const [click, setClick] = useState(null)
+
+  const { state, dispatch } = useContext(UserContext)
 
   let [fontsLoaded] = useFonts({
     Epilogue_400Regular,
@@ -51,8 +55,6 @@ export default ({ navigation }) => {
   if (!fontsLoaded) {
     return <AppLoading />
   }
-
-  const data = [0, 1, 2, 3, 4, 5, 6, 7]
 
   const findIcon = (iconName) => {
     if (iconName == 'serveless') return serveless
@@ -97,12 +99,23 @@ export default ({ navigation }) => {
   }
 
   const handleGoEvents = () => {
-    navigation.navigate('Events')
+    const events = returnEvents(click + 1)
+
+    if (events.length > 0) {
+      dispatch({
+        type: 'setEvents',
+        payload: {
+          events: events,
+        },
+      })
+      navigation.navigate('Events')
+    }
   }
 
-  const returnNumberForEvents = (id) => {
-    const NumberForEvents = api.events.filter((item) => item.tipoId == id)
-    return NumberForEvents.length
+  const returnEvents = (id, isSize = false) => {
+    const events = api.events.filter((item) => item.tipoId == id)
+
+    return isSize ? events.length : events
   }
 
   return (
@@ -155,7 +168,7 @@ export default ({ navigation }) => {
                 index === click ? '#FF5100' : click === null ? 'white' : 'gray'
               }
               fColor={index === click ? true : false}
-              numberEvents={returnNumberForEvents(item.id)}
+              numberEvents={returnEvents(item.id, true)}
             />
           </View>
         )}

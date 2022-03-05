@@ -1,4 +1,4 @@
-import React from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import {
   Text,
   View,
@@ -29,9 +29,14 @@ import { arrowLeft } from '../../../assets/icons'
 import { styles } from './styles'
 
 import CardItemEvent from '../../components/CardItemEvent'
+import { UserContext } from '../../context/UserContext'
+
+import { filtroResults, hora, data } from '../../utils/utils'
 
 export default ({ navigation }) => {
-  React.useLayoutEffect(() => {
+  const { state, dispatch } = useContext(UserContext)
+
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
@@ -58,8 +63,16 @@ export default ({ navigation }) => {
     return <AppLoading />
   }
 
-  const handleGoEvents = () => {
-    navigation.navigate('EventInfo')
+  const handleGoEvents = (event) => {
+    if (!event.length) {
+      dispatch({
+        type: 'setEvent',
+        payload: {
+          event: event,
+        },
+      })
+      navigation.navigate('EventInfo')
+    }
   }
 
   return (
@@ -96,43 +109,17 @@ export default ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         style={{ marginBottom: 20 }}
       >
-        <CardItemEvent
-          title='Criando interfaces muito malucas com o Figma!'
-          description='  Você pode criar interfaces malucas que dispertam sua criativade.
-            Usando de recursos do próprio figma, como seus plugins.'
-          org='Comunidade Ballerini'
-          onPress={handleGoEvents}
-        />
-        <CardItemEvent
-          title='Criando interfaces muito malucas com o Figma!'
-          description='  Você pode criar interfaces malucas que dispertam sua criativade.
-            Usando de recursos do próprio figma, como seus plugins.'
-          org='Comunidade Ballerini'
-        />
-        <CardItemEvent
-          title='Criando interfaces muito malucas com o Figma!'
-          description='  Você pode criar interfaces malucas que dispertam sua criativade.
-            Usando de recursos do próprio figma, como seus plugins.'
-          org='Comunidade Ballerini'
-        />
-        <CardItemEvent
-          title='Criando interfaces muito malucas com o Figma!'
-          description='  Você pode criar interfaces malucas que dispertam sua criativade.
-            Usando de recursos do próprio figma, como seus plugins.'
-          org='Comunidade Ballerini'
-        />
-        <CardItemEvent
-          title='Criando interfaces muito malucas com o Figma!'
-          description='  Você pode criar interfaces malucas que dispertam sua criativade.
-            Usando de recursos do próprio figma, como seus plugins.'
-          org='Comunidade Ballerini'
-        />
-        <CardItemEvent
-          title='Criando interfaces muito malucas com o Figma!'
-          description='  Você pode criar interfaces malucas que dispertam sua criativade.
-            Usando de recursos do próprio figma, como seus plugins.'
-          org='Comunidade Ballerini'
-        />
+        {state.events.map((event) => (
+          <CardItemEvent
+            key={event.id}
+            title={event.titulo}
+            description={event.descricao}
+            org={event.organizador}
+            onPress={() => handleGoEvents(event)}
+            data={data(filtroResults(event.dataInicio))}
+            hora={hora(filtroResults(event.dataInicio))}
+          />
+        ))}
       </ScrollView>
     </View>
   )

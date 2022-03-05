@@ -2,8 +2,9 @@ import { TouchableOpacity, View, Text } from 'react-native'
 import { SvgXml } from 'react-native-svg'
 
 import { arrowRight } from '../../../assets/icons'
+import { formatMes } from '../../utils/utils'
 
-export default ({ title, description, org, onPress }) => {
+export default ({ title, description, org, onPress, data, hora }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -32,9 +33,9 @@ export default ({ title, description, org, onPress }) => {
               lineHeight: 20,
             }}
           >
-            02/MAR
+            {`${data[0][0]}/${formatMes(data[0][1])}`}
           </Text>{' '}
-          - 19:00
+          - {`${hora[0][0]}:${hora[0][1]}`}
         </Text>
         <Text
           numberOfLines={2}
