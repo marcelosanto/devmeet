@@ -35,6 +35,8 @@ const formatDayPorcentage = (dayPorcentage) => {
     return dayPorcentage
   } else if (dayPorcentage > 100) {
     return dayPorcentage / 20
+  } else {
+    return 100
   }
 }
 

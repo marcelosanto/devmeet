@@ -174,46 +174,54 @@ export default ({ navigation }) => {
         )}
       />
 
-      {test && (
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}
-        >
-          <Text
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          marginTop: 70,
+          marginRight: 32,
+          marginBottom: 32,
+        }}
+      >
+        {test && (
+          <View
             style={{
-              fontSize: 16,
-              fontFamily: 'Epilogue_600SemiBold',
-              lineHeight: 32,
-              color: 'white',
-              marginRight: 10,
-              textAlign: 'right',
-            }}
-          >
-            Próximo
-          </Text>
-
-          <TouchableOpacity
-            onPress={handleGoEvents}
-            style={{
-              backgroundColor: '#04D361',
-              width: 40,
-              height: 40,
-              justifyContent: 'center',
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
               alignItems: 'center',
-              borderRadius: 11,
-              color: '#ffffff',
-              marginRight: 32,
-              marginBottom: 40,
-              marginTop: 36,
             }}
           >
-            <SvgXml width='22' height='22' xml={arrowRightWhite} />
-          </TouchableOpacity>
-        </View>
-      )}
+            <Text
+              style={{
+                fontSize: 16,
+                fontFamily: 'Epilogue_600SemiBold',
+                lineHeight: 32,
+                color: 'white',
+                marginRight: 10,
+                textAlign: 'right',
+              }}
+            >
+              Próximo
+            </Text>
+
+            <TouchableOpacity
+              onPress={handleGoEvents}
+              style={{
+                backgroundColor: '#04D361',
+                width: 40,
+                height: 40,
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 11,
+                color: '#ffffff',
+              }}
+            >
+              <SvgXml width='22' height='22' xml={arrowRightWhite} />
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </View>
   )
 }
