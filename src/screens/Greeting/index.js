@@ -9,7 +9,7 @@ import { SvgXml } from 'react-native-svg'
 
 import { styles } from './styles'
 
-import { arrowRight } from '../../../assets/icons'
+import { arrowRightWhite } from '../../../assets/icons'
 
 export default ({ navigation }) => {
   let [fontsLoaded] = useFonts({
@@ -84,7 +84,7 @@ export default ({ navigation }) => {
           }}
           onPress={handleClick}
         >
-          <SvgXml width='20' height='20' xml={arrowRight} />
+          <SvgXml width='40' height='40' xml={arrowRightWhite} />
         </TouchableOpacity>
       </View>
     </View>

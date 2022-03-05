@@ -27,7 +27,7 @@ const formatDateAndTime = (dateAndTime) => {
 }
 
 const formatDayPorcentage = (dayPorcentage) => {
-  if (dayPorcentage < 20) {
+  if (dayPorcentage > 0 && dayPorcentage < 20) {
     return dayPorcentage * 4
   } else if (dayPorcentage > 20 && dayPorcentage < 40) {
     return dayPorcentage * 2

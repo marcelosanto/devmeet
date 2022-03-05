@@ -120,6 +120,18 @@ export default ({ navigation }) => {
             hora={hora(filtroResults(event.dataInicio))}
           />
         ))}
+        <View style={{ marginTop: 31, alignItems: 'center' }}>
+          <Text
+            style={{
+              fontFamily: 'Epilogue_500Medium',
+              color: 'white',
+              fontSize: 12,
+              lineHeight: 24,
+            }}
+          >
+            Sem mais eventos
+          </Text>
+        </View>
       </ScrollView>
     </View>
   )

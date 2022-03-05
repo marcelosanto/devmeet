@@ -18,7 +18,6 @@ import AppLoading from 'expo-app-loading'
 import { styles } from './styles'
 
 import CardList from '../../components/CardList'
-import { dados } from '../../utils/data'
 import { api } from '../../Api/events'
 
 import {
@@ -179,7 +178,7 @@ export default ({ navigation }) => {
           flexDirection: 'row',
           justifyContent: 'flex-end',
           alignItems: 'center',
-          marginTop: 70,
+          marginTop: 32,
           marginRight: 32,
           marginBottom: 32,
         }}

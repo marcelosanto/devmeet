@@ -25,7 +25,12 @@ import {
 import AppLoading from 'expo-app-loading'
 import { SvgXml } from 'react-native-svg'
 
-import { arrowLeft, arrowRight, bell, bell_off } from '../../../assets/icons'
+import {
+  arrowLeft,
+  arrowRightWhite,
+  bell,
+  bell_off,
+} from '../../../assets/icons'
 
 import { styles } from './styles'
 
@@ -97,7 +102,7 @@ export default ({ navigation }) => {
   if (!fontsLoaded) {
     return <AppLoading />
   }
-  console.log(formatDayPorcentage(day))
+
   return (
     <View style={styles.container}>
       <View style={{ marginLeft: 30 }}>
@@ -206,140 +211,199 @@ export default ({ navigation }) => {
             }}
           >
             <Text style={{ color: 'white' }}>{state.event.link}</Text>
-            <View style={{ flexDirection: 'row' }}>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: 'gray',
-                  width: 24,
-                  height: 24,
-                  borderRadius: 6,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginRight: 10,
-                }}
-              >
-                <SvgXml width='14' height='14' xml={bell} stroke='white' />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#04D36120',
-                  width: 24,
-                  height: 24,
-                  borderRadius: 6,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <SvgXml
-                  width='14'
-                  height='14'
-                  xml={arrowRight}
-                  stroke='white'
-                />
-              </TouchableOpacity>
-            </View>
+            {day > 0 ? (
+              <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: 'gray',
+                    width: 24,
+                    height: 24,
+                    borderRadius: 6,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginRight: 10,
+                  }}
+                >
+                  <SvgXml width='14' height='14' xml={bell} stroke='white' />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#04D36120',
+                    width: 24,
+                    height: 24,
+                    borderRadius: 6,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <SvgXml
+                    width='14'
+                    height='14'
+                    xml={arrowRightWhite}
+                    stroke='white'
+                  />
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#DA3E3E20',
+                    width: 24,
+                    height: 24,
+                    borderRadius: 6,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginRight: 10,
+                  }}
+                >
+                  <SvgXml width='14' height='14' xml={bell_off} />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#04D361',
+                    width: 24,
+                    height: 24,
+                    borderRadius: 6,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <SvgXml width='14' height='14' xml={arrowRightWhite} />
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         </View>
 
-        <View style={{ marginTop: 30 }}>
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'Epilogue_600SemiBold',
-              fontSize: 16,
-              lineHeight: 22,
-            }}
-          >
-            Tempo até o evento
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              marginRight: 32,
-              marginLeft: -10,
-              marginTop: 10,
-            }}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 40,
-                  fontFamily: 'Rajdhani_700Bold',
-                  lineHeight: 51,
-                }}
-              >
-                {day}
-              </Text>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 10,
-                  lineHeight: 10,
-                  fontFamily: 'Epilogue_600SemiBold',
-                }}
-              >
-                DAYS(s)
-              </Text>
+        {day > 0 ? (
+          <View style={{ marginTop: 30 }}>
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'Epilogue_600SemiBold',
+                fontSize: 16,
+                lineHeight: 22,
+              }}
+            >
+              Tempo até o evento
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                marginRight: 32,
+                marginLeft: -10,
+                marginTop: 10,
+              }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 40,
+                    fontFamily: 'Rajdhani_700Bold',
+                    lineHeight: 51,
+                  }}
+                >
+                  {day}
+                </Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 10,
+                    lineHeight: 10,
+                    fontFamily: 'Epilogue_600SemiBold',
+                  }}
+                >
+                  DAYS(s)
+                </Text>
+              </View>
+
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 40,
+                    fontFamily: 'Rajdhani_700Bold',
+                    lineHeight: 51,
+                  }}
+                >
+                  {hour}
+                </Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 10,
+                    lineHeight: 10,
+                    fontFamily: 'Epilogue_600SemiBold',
+                  }}
+                >
+                  HOUR(s)
+                </Text>
+              </View>
+
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 40,
+                    fontFamily: 'Rajdhani_700Bold',
+                    lineHeight: 51,
+                  }}
+                >
+                  {min}
+                </Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 10,
+                    lineHeight: 10,
+                    fontFamily: 'Epilogue_600SemiBold',
+                  }}
+                >
+                  MIN(s)
+                </Text>
+              </View>
             </View>
 
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 40,
-                  fontFamily: 'Rajdhani_700Bold',
-                  lineHeight: 51,
-                }}
-              >
-                {hour}
-              </Text>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 10,
-                  lineHeight: 10,
-                  fontFamily: 'Epilogue_600SemiBold',
-                }}
-              >
-                HOUR(s)
-              </Text>
-            </View>
-
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 40,
-                  fontFamily: 'Rajdhani_700Bold',
-                  lineHeight: 51,
-                }}
-              >
-                {min}
-              </Text>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 10,
-                  lineHeight: 10,
-                  fontFamily: 'Epilogue_600SemiBold',
-                }}
-              >
-                MIN(s)
-              </Text>
+            <View style={{ marginRight: 32 }}>
+              <ProgressBar
+                step={formatDayPorcentage(day)}
+                steps={100}
+                height={10}
+                color='#FF5100'
+              />
             </View>
           </View>
+        ) : (
+          <View style={{ marginTop: 30 }}>
+            <Text
+              style={{
+                width: 200,
+                color: 'white',
+                fontFamily: 'Epilogue_700Bold',
+                fontSize: 19,
+                lineHeight: 27,
+                marginBottom: 10,
+                marginLeft: 10,
+              }}
+            >
+              O Evento já está rolando! 🎉
+            </Text>
 
-          <View style={{ marginRight: 32 }}>
-            <ProgressBar
-              step={formatDayPorcentage(day)}
-              steps={100}
-              height={10}
-              color='#FF5100'
-            />
+            <View style={{ marginRight: 32 }}>
+              <ProgressBar
+                step={formatDayPorcentage(day)}
+                steps={100}
+                height={10}
+                color='#04D361'
+              />
+            </View>
           </View>
-        </View>
+        )}
       </View>
     </View>
   )
