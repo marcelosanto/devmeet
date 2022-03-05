@@ -2,7 +2,7 @@
 
 ### Sobre
 
-App feito com base no desafio da [Comunidade Ballerini](https://www.linkedin.com/company/comunidadeballerini), 
+App feito com base no desafio da [Comunidade Ballerini](https://www.linkedin.com/company/comunidadeballerini), que consiste em uma agenda de eventos.
 
 ### 🛠 Tecnologias
 
