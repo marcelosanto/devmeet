@@ -1,15 +1,14 @@
-export const arrowRight = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
-<desc>Created with Fabric.js 1.7.22</desc>
-<defs>
-</defs>
-<g transform="translate(128 128) scale(0.72 0.72)" style="">
-	<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)" >
-	<path d="M 73.534 58.799 L 31.201 16.466 c -1.059 -1.059 -1.059 -2.776 0 -3.835 L 43.038 0.794 c 1.059 -1.059 2.776 -1.059 3.835 0 l 42.333 42.333 c 1.059 1.059 1.059 2.776 0 3.835 L 77.369 58.799 C 76.31 59.858 74.593 59.858 73.534 58.799 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255, 255, 255); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-	<path d="M 73.534 31.201 L 31.201 73.534 c -1.059 1.059 -1.059 2.776 0 3.835 l 11.837 11.837 c 1.059 1.059 2.776 1.059 3.835 0 l 42.333 -42.333 c 1.059 -1.059 1.059 -2.776 0 -3.835 L 77.369 31.201 C 76.31 30.142 74.593 30.142 73.534 31.201 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255, 255, 255); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-	<path d="M 62.579 56.082 l -59.868 0 C 1.214 56.082 0 54.867 0 53.37 L 0 36.63 c 0 -1.498 1.214 -2.712 2.712 -2.712 l 59.868 0 c 1.498 0 2.712 1.214 2.712 2.712 l 0 16.739 C 65.291 54.867 64.077 56.082 62.579 56.082 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255, 255, 255); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-</g>
-</g>
-</svg>`
+export const arrowRight = `<svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.5" d="M8.09527 14.9524C7.83228 14.9524 7.61908 14.7392 7.61908 14.4762V13.5238C7.61908 13.2608 7.83228 13.0476 8.09527 13.0476H20C20.526 13.0476 20.9524 13.474 20.9524 14C20.9524 14.526 20.526 14.9524 20 14.9524H8.09527Z" fill="#FF5100"/>
+<path d="M13.6123 19.0409C13.2404 19.4129 13.2404 20.0159 13.6123 20.3878C13.9842 20.7597 14.5872 20.7597 14.9592 20.3878L20.6734 14.6735C21.034 14.313 21.0466 13.7324 20.7021 13.3565L15.464 7.64225C15.1085 7.25452 14.5061 7.22832 14.1184 7.58375C13.7306 7.93917 13.7044 8.54161 14.0599 8.92934L18.6818 13.9714L13.6123 19.0409Z" fill="#FF5100"/>
+</svg>
+`
+
+export const arrowLeft = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.6666 8H3.33331" stroke="#C6C6C6" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.99998 12.6666L3.33331 7.99992L7.99998 3.33325" stroke="#C6C6C6" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`
 
 export const serveless = `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M25.625 26.6667H7.70833C6.21167 26.6667 5 25.455 5 23.9583V7.70833C5 6.21167 6.21167 5 7.70833 5H25.625C27.1217 5 28.3333 6.21167 28.3333 7.70833V23.9583C28.3333 25.455 27.1217 26.6667 25.625 26.6667Z" stroke="#282828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
